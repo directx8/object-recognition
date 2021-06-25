@@ -15,10 +15,16 @@ class FaceLandmarks:
         result = self.face_mesh.process(frame_rgb)
 
         facelandmarks = []
-        for facial_landmarks in result.multi_face_landmarks:
-            for i in range(0, 468):
-                pt1 = facial_landmarks.landmark[i]
-                x = int(pt1.x * width)
-                y = int(pt1.y * height)
-                facelandmarks.append([x, y])
+        if result.multi_face_landmarks != None:
+            for facial_landmarks in result.multi_face_landmarks:
+                for i in range(0, 468):
+                    pt1 = facial_landmarks.landmark[i]
+                    x = int(pt1.x * width)
+                    y = int(pt1.y * height)
+                    facelandmarks.append([x, y])
+        else:
+            x = int(0)
+            y = int(0)
+            facelandmarks.append([x, y])
+        
         return np.array(facelandmarks, np.int32)
