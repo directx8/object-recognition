@@ -23,8 +23,10 @@ class FaceLandmarks:
                     y = int(pt1.y * height)
                     facelandmarks.append([x, y])
         else:
-            x = int(0)
-            y = int(0)
-            facelandmarks.append([x, y])
-        
+            for i in range(0, 468):
+                x = int(0)
+                y = int(0)
+                facelandmarks.append([x, y])
+
+
         return np.array(facelandmarks, np.int32)
