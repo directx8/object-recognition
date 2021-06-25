@@ -5,12 +5,16 @@ import numpy as np
 # Load face landmarks
 fl = FaceLandmarks()
 
-# LOad the video
-cap = cv2.VideoCapture("forth_Trim.mp4")
+# LOad the webcam stream
+cap = cv2.VideoCapture(0)
+
+# Check if the webcam is opened correctly
+if not cap.isOpened():
+    raise IOError("Webcam is not accessable")
 
 while True:
     ret, frame = cap.read()
-    frame = cv2.resize(frame, None, fx=0.5, fy=0.5) #resize video
+    frame = cv2.resize(frame, None, fx=0.75, fy=0.75, interpolation=cv2.INTER_AREA) #resize video
     frame_copy = frame.copy()
     height, width, _ = frame.shape
 
