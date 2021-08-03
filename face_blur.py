@@ -1,11 +1,10 @@
 import cv2
-import mediapipe as mp
 from face_detection import FaceDetection
 from text_detection import TextDetection
 import numpy as np
 
 # Load face landmarks
-fl = FaceDetection()
+fd = FaceDetection()
 td = TextDetection()
 
 # LOad the webcam stream
@@ -17,10 +16,10 @@ if not cap.isOpened():
 
 while True:
     ret, frame = cap.read()
-    frame = cv2.resize(frame, None, fx=1, fy=1, interpolation=cv2.INTER_AREA) #resize video by 0.75 the original size
+    frame = cv2.resize(frame, None, fx=0.75, fy=0.75, interpolation=cv2.INTER_AREA) #resize video by 0.75 the original size
 
     # call blurring func
-    result_face = fl.blur_facial_features(frame)
+    result_face = fd.face_blur(frame)
     result = td.text_blur(result_face)
     key = cv2.waitKey(1)
 

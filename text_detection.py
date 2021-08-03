@@ -72,7 +72,7 @@ class TextDetection:
 		# load the pre-trained EAST text detector
 		network = cv2.dnn.readNet(self.net)
 		# resize the frame, maintaining the aspect ratio
-		frame = imutils.resize(frame, width=1000)
+		#frame = imutils.resize(frame, width=500)
 		orig = frame.copy()
 		# if our frame dimensions are None, we still need to compute the
 		# ratio of old frame dimensions to new frame dimensions
